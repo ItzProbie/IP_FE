@@ -76,6 +76,7 @@ const Login = () => {
                     localStorage.setItem('userToken' , data.data.token);
                     localStorage.setItem('userEmail' , email);
                     localStorage.setItem('userImage' , data.data.dp);
+                    localStorage.setItem('userRole' , data.data.role);
                     navigate("/home");
                 }
 
@@ -107,10 +108,6 @@ const Login = () => {
            }
 
         }
-
-
-
-
     }
 
     return (
