@@ -188,7 +188,7 @@ const Signup = () => {
         <>
         {
             isOTPSent ? (
-            
+            // OTP-PAGE
             <div className="flex flex-col items-center justify-center min-h-[80vh] gap-y-11">
                 <Label className="text-xl">Enter Your OTP</Label>
                 <InputOTP maxLength={6} value = {otp} onChange = {((e) => setOtp(e))}>
@@ -240,7 +240,7 @@ const Signup = () => {
 
                             <div className="flex flex-col md:flex-row justify-start items-center gap-14">
 
-                                <div className="flex flex-col justify-center items-start gap-y-4">
+                                {/* <div className="flex flex-col justify-center items-start gap-y-4">
                                     <Label className="text-base">Date Of Birth</Label>
                                     <Calendar
                                     mode="single"
@@ -248,109 +248,86 @@ const Signup = () => {
                                     onSelect={setDate}
                                     className="rounded-md border shadow"
                                     />
-                                </div>
+                                </div> */}
 
-                                <div className="flex flex-col justify-center items-center min-w-[30%] min-h-[90%] gap-y-4 mb-7">
+                                <div className="flex flex-col md:flex-row justify-between items-center gap-[100%] gap-y-4 mb-7">                                  
                                     
-                                    {/* <Label className="text-base">Role</Label>
-                                    <RadioGroup value={role} onChange={(value) => {console.log(value)}}>
-                                        <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="Student" id="r1" />
-                                            <Label htmlFor="r1" className="text-base">Student</Label>
+                                    {/* Department */}
+                                    <div>
+
+                                        <div className="flex flex-col justify-between items-center">
+                                            <Label className="text-base mb-3">Department</Label>
+                                            <div className="flex justify-around items-center gap-[27px] ">
+                                            <input
+                                                type="checkbox"
+                                                id="ETCCheckbox"
+                                                name="ETC"
+                                                checked={dept === "ETC"}
+                                                onChange={handleChangeDept}
+                                                className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 "
+                                                />
+                                            <Label htmlFor="ETCCheckbox" className="text-base">ETC</Label>
+                                            </div>
                                         </div>
-                                        <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="Teacher" id="r2" />
-                                            <Label htmlFor="r2" className="text-base">Teacher</Label>
-                                        </div>
-                                    </RadioGroup> */}
-                                    
-                                    
-                                    <div className="flex flex-col justify-between items-center">
-                                        <Label className="text-base mb-3">Role</Label>
+                                            
                                         <div className="flex justify-around items-center gap-3">
-                                        <input
-                                            type="checkbox"
-                                            id="studentCheckbox"
-                                            name="Student"
-                                            checked={role === "Student"}
-                                            onChange={handleChangeRole}
-                                            className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 "
-                                            />
-                                        <Label htmlFor="studentCheckbox" className="text-base">Student</Label>
+                                            <input
+                                                type="checkbox"
+                                                id="ITCheckbox"
+                                                name="IT"
+                                                checked={dept === "IT"}
+                                                onChange={handleChangeDept}
+                                                className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
+                                                />
+                                            <Label htmlFor="ITCheckbox" className="text-base">{`IT `}</Label>
                                         </div>
-                                    </div>
-                                        
-                                    <div className="flex justify-around items-center gap-3">
-                                        <input
-                                            type="checkbox"
-                                            id="teacherCheckbox"
-                                            name="Teacher"
-                                            checked={role === "Teacher"}
-                                            onChange={handleChangeRole}
-                                            className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
-                                            />
-                                        <Label htmlFor="teacherCheckbox" className="text-base">Teacher</Label>
-                                    </div>
-
-                                    <div className="flex flex-col justify-between items-center">
-                                        <Label className="text-base mb-3">Department</Label>
+                                            
                                         <div className="flex justify-around items-center gap-3">
-                                        <input
-                                            type="checkbox"
-                                            id="ETCCheckbox"
-                                            name="ETC"
-                                            checked={dept === "ETC"}
-                                            onChange={handleChangeDept}
-                                            className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 "
-                                            />
-                                        <Label htmlFor="studentCheckbox" className="text-base">ETC</Label>
+                                            <input
+                                                type="checkbox"
+                                                id="CSCheckbox"
+                                                name="CS"
+                                                checked={dept === "CS"}
+                                                onChange={handleChangeDept}
+                                                className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
+                                                />
+                                            <Label htmlFor="CSCheckbox" className="text-base">{`CS `}</Label>
                                         </div>
+
+                                    </div>
+
+                                    {/* Role */}
+                                    <div>
+                                        
+                                        <div className="flex flex-col justify-between items-center -translate-y-[12%]">
+                                            <Label className="text-base mb-3">Role</Label>
+                                            <div className="flex justify-around items-center gap-3">
+                                            <input
+                                                type="checkbox"
+                                                id="studentCheckbox"
+                                                name="Student"
+                                                checked={role === "Student"}
+                                                onChange={handleChangeRole}
+                                                className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-2 "
+                                                />
+                                            <Label htmlFor="studentCheckbox" className="text-base">Student</Label>
+                                            </div>
+                                        </div>
+                                            
+                                        <div className="flex justify-around items-center gap-3">
+                                            <input
+                                                type="checkbox"
+                                                id="teacherCheckbox"
+                                                name="Teacher"
+                                                checked={role === "Teacher"}
+                                                onChange={handleChangeRole}
+                                                className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
+                                                />
+                                            <Label htmlFor="teacherCheckbox" className="text-base">Teacher</Label>
+                                        </div>
+
                                     </div>
                                         
-                                    <div className="flex justify-around items-center gap-3">
-                                        <input
-                                            type="checkbox"
-                                            id="ITCheckbox"
-                                            name="IT"
-                                            checked={dept === "IT"}
-                                            onChange={handleChangeDept}
-                                            className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
-                                            />
-                                        <Label htmlFor="teacherCheckbox" className="text-base">IT </Label>
-                                    </div>
-                                        
-                                    <div className="flex justify-around items-center gap-3">
-                                        <input
-                                            type="checkbox"
-                                            id="CSCheckbox"
-                                            name="CS"
-                                            checked={dept === "CS"}
-                                            onChange={handleChangeDept}
-                                            className="text-base rounded-full appearance-none border border-gray-300 h-3 w-3 flex-shrink-0 checked:bg-blue-500 checked:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 "
-                                            />
-                                        <Label htmlFor="teacherCheckbox" className="text-base">CS </Label>
-                                    </div>
-                                        
-                                       
-                                    
-
-                                    {/* <Label className="text-base">Department</Label>
-
-                                    <RadioGroup defaultValue="ETC" onChange={((value) => setDept(value))}>
-                                        <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="ETC" id="r1" />
-                                            <Label htmlFor="r1" className="text-base">ETC</Label>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="IT" id="r2" />
-                                            <Label htmlFor="r2" className="text-base">IT</Label>
-                                        </div>
-                                        <div className="flex items-center space-x-2">
-                                            <RadioGroupItem value="CS" id="r3" />
-                                            <Label htmlFor="r3" className="text-base">CS</Label>
-                                        </div>
-                                    </RadioGroup> */}
-
                                 </div>
 
                             </div>
