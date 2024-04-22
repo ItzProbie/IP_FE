@@ -113,7 +113,7 @@ const Signup = () => {
         }
 
         let payload = {
-            firstName , lastName , email , password , id : regId , mentor : mentorEmail , dept , otp : parseInt(otp)
+            firstName , lastName , email , password , id : regId , mentor: (role === "Student") ? mentorEmail : undefined, dept , otp : parseInt(otp)
         };
         console.log(payload);
         try{
