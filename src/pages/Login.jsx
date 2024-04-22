@@ -6,9 +6,12 @@ import { useNavigate } from "react-router-dom";
 import Requests from "../api/ApiList";
 import { useToast } from "../components/ui/use-toast";
 import Loader from "../components/loader";
+import { FaEye , FaEyeSlash } from "react-icons/fa6";
+import { Link } from "react-router-dom";
+
 const Login = () => {
 
-    const [ showPassword, setShowPassword ] = useState(false);
+    const [ showPassword, setShowPassword ] = useState(true);
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
     const [loading , setLoading] = useState(false);
@@ -117,14 +120,27 @@ const Login = () => {
                 (
 
                     <div className="flex flex-col items-center justify-center min-h-[80vh]">
-                        <div className="flex flex-col items-start gap-5 min-h-[50vh] min-w-[28vw] m-14 p-14 
+                        <div className="flex flex-col items-start gap-5 min-h-[50vh] min-w-[28vw] m-14 p-14
                         shadow-[0_20px_50px_rgba(8,_112,_184,_0.3)]">
 
-                            <Label htmlFor="email" className="text-lg" name="email" value={email}>Email ID</Label>
+                            <Label htmlFor="email" className="text-base" name="email" value={email}>Email ID</Label>
                             <Input type="email" placeholder="Email" id="email" className="text-lg" onChange={(e) => setEmail(e.target.value)}></Input>
-                            <Label htmlFor="password" className="text-lg" name="password" value={password}>Password</Label>
+                            <Label htmlFor="password" className="text-base" name="password" value={password}>Password</Label>
                             <Input type={showPassword ? "text" : "password"} placeholder="Password" id="password" className="text-lg" onChange={(e) => setPassword(e.target.value)}></Input>
-                            <Button className="text-lg m-y-3" onClick={onSubmitHandler}>Submit</Button>
+                            <p className="min-w-[100%] flex flex-row justify-end -mx-2">{showPassword ? <FaEyeSlash onClick={() => {setShowPassword(!showPassword)}}/> : <FaEye onClick={() => {setShowPassword(!showPassword)}} />}</p>
+                            <div className="flex flex-row justify-center items-center min-w-[100%] gap-5">
+
+                                <Button className="text-base m-y-3" onClick={onSubmitHandler}>Submit</Button>
+
+                                <Link to="/signup">
+                                    <Button className="text-lg m-y-3" variant="ghost">
+                                        <Link to="/signup">
+                                            <span style={{ background: 'radial-gradient(circle at 10% 20%, rgb(210, 36, 129) 0%, rgb(152, 75, 215) 90%)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>SignUp</span>
+                                        </Link>
+                                    </Button>
+                                </Link>
+
+                            </div>
 
                         </div>
                 </div>
