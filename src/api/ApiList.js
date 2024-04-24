@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-	// baseURL: 'http://localhost:4000/api/v1',
-	baseURL: 'https://internship-portal-be.vercel.app/api/v1',
+	baseURL: 'http://localhost:4000/api/v1',
+	// baseURL: 'https://internship-portal-be.vercel.app/api/v1',
 });
 
 // Login
@@ -35,13 +35,14 @@ const getDomains = () => {
 };
 
 const getDomainName = (data) => {
+	console.log(data);
 	return axiosInstance.get(`/domain/getDomain/${data}`, {
 		headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 	});
 };
 
-const deleteDomain = () => {
-	return axiosInstance.delete('/domain/deleteDomain', {
+const deleteDomain = (data) => {
+	return axiosInstance.delete(`/domain/deleteDomain${data}`, {
 		headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 	});
 };
@@ -49,7 +50,8 @@ const deleteDomain = () => {
 // Internship
 
 const createInternship = (data) => {
-	// Data ={ domain, startdate , enddate}
+	// Data ={ domain, startdate , enddate , description(optional)}
+	console.log(data);
 	return axiosInstance.post('/internship/createInternship', data, {
 		headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 	});
@@ -73,6 +75,27 @@ const changeInternStatus = (data) => {
 			Authorization: `Bearer ${localStorage.getItem('token')}`,
 		},
 	});
+};
+
+const getInternshipDetails = () => {
+	if(localStorage.getItem("userRole")==="Student"){
+		return axiosInstance.get(`/internship/getInternshipDetails`,{
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		});
+	}else{
+		return axiosInstance.get(`/internship/getTeacherInternshipDetails`,{
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		});
+	}
+	// return axiosInstance.get(`/internship/getInternshipDetails`,{
+	// 			headers: {
+	// 				Authorization: `Bearer ${localStorage.getItem('token')}`,
+	// 			},
+	// 		});
 };
 
 const acceptIntern = (data) => {
@@ -142,6 +165,7 @@ const Requests = {
 	//  - Student
 	applyInternship,
 	getInternship,
+	getInternshipDetails
 };
 
 export default Requests;

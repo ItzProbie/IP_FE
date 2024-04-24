@@ -1,20 +1,18 @@
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
-import { useState , useEffect } from "react";
+import { useState , useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Requests from "../api/ApiList";
 import { useToast } from "../components/ui/use-toast";
 import Loader from "../components/loader";
-import { Link } from "react-router-dom";
-import { RadioGroup, RadioGroupItem } from "../components/ui/radio-group"
-import { Calendar } from "../components/ui/calendar";
 import {
     InputOTP,
     InputOTPGroup,
     InputOTPSeparator,
     InputOTPSlot,
   } from "../components/ui/input-otp"
+import { AppContext } from "../context/AppContext";
 
 const Signup = () => {
 
@@ -28,7 +26,7 @@ const Signup = () => {
     const [dept, setDept] = useState('ETC');
     const [role , setRole] = useState("Student");
     const [isOTPSent , setIsOTPSent] = useState(false);
-    const [loading , setLoading] = useState(false);
+    const {loading , setLoading} = useContext(AppContext);
     const [otp , setOtp] = useState('');
     const { toast } = useToast();
     const navigate = useNavigate();
@@ -114,14 +112,14 @@ const Signup = () => {
             return;
         }
 
-        let payload = {
+        let payloadOTP = {
             firstName , lastName , email , password , id : regId , mentor: (role === "Student") ? mentorEmail : undefined, dept , otp  , role
         };
-        console.log(payload);
+        console.log(payloadOTP);
         try{
             setLoading(true);
             
-            const data = await Requests.signup(payload);
+            const data = await Requests.signup(payloadOTP);
     
             console.log(data);
 
@@ -169,6 +167,7 @@ const Signup = () => {
 
             try{
                 setLoading(true);
+                console.log(otp);
                 let otpResponse = await Requests.sendotp(payload);
                 console.log(otpResponse);
 
@@ -369,7 +368,7 @@ const Signup = () => {
                                 <Label htmlFor="email" className="text-base" name="email" value={email}>Email ID</Label>
                                 <Input type="email" placeholder="Email" id="email" className="text-lg" onChange={(e) => setEmail(e.target.value)}></Input>
                                 <Label htmlFor="password" className="text-base" name="password" value={password}>Password</Label>
-                                <Input type="text" placeholder="Password" id="password" className="text-lg" onChange={(e) => setPassword(e.target.value)}></Input>
+                                <Input type="password" placeholder="Password" id="password" className="text-lg" onChange={(e) => setPassword(e.target.value)}></Input>
                                 
                                 {
                                     role === "Student" && (

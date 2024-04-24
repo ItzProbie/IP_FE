@@ -1,20 +1,23 @@
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
-import { useState , useEffect } from "react";
+import { useState , useEffect , useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Requests from "../api/ApiList";
 import { useToast } from "../components/ui/use-toast";
 import Loader from "../components/loader";
 import { FaEye , FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+
 
 const Login = () => {
 
-    const [ showPassword, setShowPassword ] = useState(true);
+    const [ showPassword, setShowPassword ] = useState(false);
     const [email , setEmail] = useState('');
     const [password , setPassword] = useState('');
-    const [loading , setLoading] = useState(false);
+    const {loading , setLoading} = useContext(AppContext);
+    const {setApplications} = useContext(AppContext)
     const navigate = useNavigate();
     const { toast } = useToast();
 
@@ -76,10 +79,14 @@ const Login = () => {
                         description: "Logged In Successfully",
                         
                       });
-                    localStorage.setItem('userToken' , data.data.token);
+                    console.log(data.data);
+                    localStorage.setItem('token' , data.data.token);
                     localStorage.setItem('userEmail' , email);
                     localStorage.setItem('userImage' , data.data.dp);
                     localStorage.setItem('userRole' , data.data.role);
+                    localStorage.setItem('userId' , data.data.id);
+                    localStorage.setItem('userName' , data.data.dp.split('=')[1]);
+                    setApplications(data.data.applications);
                     navigate("/home");
                 }
 
