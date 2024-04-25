@@ -94,8 +94,8 @@ const Profile = () => {
     },[]);
 
     return (
-        <div className="flex flex-col justify-center items-center m-14 p-14">
-            <div className="flex flex-col justify-center items-center border-2 m-16 p-16">
+        <div className="flex flex-col justify-center items-center m-14 p-14 ">
+            <div className="flex flex-col justify-center items-center border-2 mb-16 p-16">
             <div className="border-[12px] rounded-full">
                 <Avatar className = " h-[8rem] w-[8rem] border border-3 border-white">
                     <AvatarImage src={localStorage.getItem("userImage")} alt="@shadcn" />

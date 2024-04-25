@@ -92,7 +92,7 @@ const CreateInternship = () => {
 
         <div className="flex flex-col items-center justify-center min-h-[80vh]">
                         <div className="flex flex-col items-start gap-5 min-h-[50vh] min-w-[28vw] m-14 p-14
-                        shadow-[0_20px_50px_rgba(8,_112,_184,_0.3)]">
+                        shadow-[0_20px_50px_rgba(8,_112,_184,_0.3)] translate-y-28">
 
                             <Label className="text-base">Domain</Label>
                             <Select onValueChange={(val) => setDomain(val)}>

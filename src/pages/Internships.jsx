@@ -90,7 +90,7 @@ const Internships = () => {
         loading ? (<Loader/>) : (
 
 
-            <div className="flex justify-center items-center mt-11">
+            <div className="flex justify-center items-center mt-28">
        {
             loading ? (<Loader/>) :  (
             <div className="w-11/12 flex flex-row flex-wrap justify-start items-stretch gap-4 ">

@@ -31,7 +31,7 @@ const Domains = () => {
                         {
                             (localStorage.getItem("userRole")==="Teacher" || localStorage.getItem("userRole")==="Admin") && (
                                 
-                                <div className="flex flex-row justify-around items-center m-5 p-5 mr-14 ml-14 border border-1 rounded-full  ">
+                                <div className="flex flex-row justify-around items-center m-5 p-5 mr-14 ml-14 border border-1 rounded-full translate-y-20">
                                     <Link to="/internship/createInternship"><Button className="bg-[#02c69f]">Create Internship</Button></Link>
                                     <Link to="/domain/createDomain"><Button className="bg-[#02c69f]">Create Domain</Button></Link>
                                     {

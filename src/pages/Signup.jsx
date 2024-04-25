@@ -230,7 +230,7 @@ const Signup = () => {
             {
                 isOTPSent ? (
                 // OTP-PAGE
-                <div className="flex flex-col items-center justify-center min-h-[80vh] gap-y-11">
+                <div className="flex flex-col items-center justify-center min-h-[80vh] gap-y-11 ">
                     <Label className="text-xl">Enter Your OTP</Label>
                     <InputOTP maxLength={6} value = {otp} onChange = {((e) => setOtp(e))}>
                     <InputOTPGroup>
