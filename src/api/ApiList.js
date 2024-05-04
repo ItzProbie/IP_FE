@@ -79,7 +79,7 @@ const changeInternStatus = (data) => {
 
 const getInternshipDetails = () => {
 	if(localStorage.getItem("userRole")==="Student"){
-		return axiosInstance.get(`/internship/getInternshipDetails`,{
+		return axiosInstance.get(`/internship/getStudentInternshipDetails`,{
 			headers: {
 				Authorization: `Bearer ${localStorage.getItem('token')}`,
 			},

@@ -30,6 +30,7 @@ const Internships = () => {
 
     useEffect(() => {
         if(internships.length===0)fetchInternships();
+        console.log(internships);
     })
 
     const handleApply = async() => {
@@ -102,9 +103,10 @@ const Internships = () => {
                     i.State && (
                         <Card className="w-[350px] flex-shrink-0 " key={i._id}>
                         <CardHeader>
-                            {i.domain.map((j) => {
-                                return <CardTitle key={j._id}>{`${j.name}`}</CardTitle>
-                            })}
+                            {/* {i.domain.map((j) => {
+                                return <CardTitle key={j._id}>{`${i.domain.name}`}</CardTitle>
+                            })} */}
+                            <CardTitle>{`${i.domain[0].name}`}</CardTitle>
                             <CardDescription>{`Mentor : ${i.createdBy.firstName} ${i.createdBy.lastName}`}</CardDescription>
                             <CardDescription>{`${i.description}`}</CardDescription>
                             <CardDescription>{new Date(i.startDate).toLocaleDateString("en-GB")}</CardDescription>

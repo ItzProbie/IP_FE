@@ -115,3 +115,22 @@
   /* font-family: monospace; */
   font-family :Verdana, Geneva, Tahoma, sans-serif
 }
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1d327a;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #09395a;
+}

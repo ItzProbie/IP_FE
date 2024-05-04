@@ -85,7 +85,7 @@ const Login = () => {
                     localStorage.setItem('userImage' , data.data.dp);
                     localStorage.setItem('userRole' , data.data.role);
                     localStorage.setItem('userId' , data.data.id);
-                    localStorage.setItem('userName' , data.data.dp.split('=')[1]);
+                    localStorage.setItem('userName' , data.data.name);
                     setApplications(data.data.applications);
                     navigate("/home");
                 }
